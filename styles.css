@@ -260,6 +260,11 @@ nav .lower>ul.nav-categories {
   font-weight: normal;
 }
 
+@media screen and (min-width: 992px) {
+nav {
+  z-index: 9;
+}}
+
 /* .js-nav-sub-categories-inner.nav-sub-categories-inner {
   display: block !important;
 }
