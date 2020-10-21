@@ -167,6 +167,16 @@ nav {
     font-style: italic;
 }
 
+.hero-service {
+    min-height: 0;
+    height: 200px;
+}
+
+.hero-simple.hero-service .inner .hero-copy {
+    font-size: 80px;
+    font-style: normal;
+}
+
 .utility-nav a {
     color: white;
     font-size: 16px;
