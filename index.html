@@ -419,9 +419,25 @@
         </div>
     </footer>
 
+    <aside class="cookie-consent" id="popup">
+        <div class="container">
+        <div class="cookie-text">
+            Ferno uses small cookies to improve your website experience. You may disable them from your browser settings at any time. <a href="#">Learn more</a>.
+        </div>
+        <div class="accept-wrapper">
+            <button id="accept">Accept</button>
+        </div>
+    </div>
+    </aside>
+
     <script src="master.min.js"></script>
     <script src="vendor.min.js"></script>
 
+    <script>
+        document.getElementById('accept').onclick = function () {
+            document.getElementById('popup').remove();
+        }
+    </script>
     
 <link rel="stylesheet" href="styles.css">
 </body>

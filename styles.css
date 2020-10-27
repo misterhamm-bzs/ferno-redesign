@@ -296,6 +296,44 @@ nav {
   z-index: 9;
 }}
 
+.cookie-consent {
+    padding: 40px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #CF1F2F;
+    color: white;
+    z-index: 9999;
+    font-weight: bold;
+}
+
+.cookie-consent .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cookie-consent a {
+    color: white;
+    text-decoration: underline;
+}
+.cookie-text {
+    flex-basis: 75%;
+}
+.accept-wrapper {
+    flex-basis: 10%;
+}
+.cookie-consent button {
+    background-color: #56bfbd;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.cookie-consent button:hover {
+    cursor: pointer;
+    background-color: #49a09f;
+}
 /* .js-nav-sub-categories-inner.nav-sub-categories-inner {
   display: block !important;
 }
