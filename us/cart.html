@@ -200,7 +200,7 @@
                                     <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                                 </div></td>
                                 <td>
-                                    <span class="js-price">$29.46</span>
+                                    <span class="js-price" data-price="29.46">$29.46</span>
                                 </td>
                             </tr>
                             <tr class="saleable">
@@ -216,7 +216,7 @@
                                     <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                                 </div></td>
                                 <td>
-                                    <span class="js-price">$32.89</span>
+                                    <span class="js-price" data-price="32.89">$32.89</span>
                                 </td>
                             </tr>
                             <tr class="saleable">
@@ -232,7 +232,7 @@
                                     <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                                 </div></td>
                                 <td>
-                                    <span class="js-price">$14.22</span>
+                                    <span class="js-price" data-price="14.22">$14.22</span>
                                 </td>
                             </tr>
                             
@@ -397,8 +397,10 @@
     <script type="text/javascript">
         const $checkbox = $('.js-checkbox');
         const $item = $('tr');
+        const $shopItem = $('#shop tr');
         const $remove = $('.js-remove'); 
         const $subtotalElem = $('.js-subtotal');
+        const $quantInput = $('.saleable input[type=number]');
         let subtotal = 0;
         
         $checkbox.on('change', (e) => {
@@ -415,21 +417,36 @@
             subtotal = 0;
             calcSubtotal();
         });
+
+        $quantInput.on('change', (e) => {
+            calcItems();
+            subtotal = 0;
+            calcSubtotal();
+        })
         
         $remove.on('click', (e) => {
             $(e.currentTarget).closest($item).hide();
         });
         
+        function calcItems() {
+           $shopItem.each((index, value) => {
+                let quantity = $(value).find('input[type=number]').val();
+                let $currPrice = $(value).find('.js-price');
+                let unitPrice = $currPrice.data('price');
+                let totalPrice = quantity * unitPrice;
+                $currPrice.text(`$${totalPrice}`);
+            });
+        }calcItems();
         function calcSubtotal() {
             const $price = $('.saleable .js-price');
             $price.each((index, value) => {
                 let currPrice = $(value).text().replace('$', '').replace(',', '');
-                console.log(currPrice);
                 subtotal += +currPrice;
                 subtotal = +subtotal.toFixed(2);
                 $subtotalElem.text(subtotal);
             });
         }calcSubtotal();
+
     </script>
 
     <link rel="stylesheet" href="../styles.css">
