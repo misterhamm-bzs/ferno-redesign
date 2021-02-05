@@ -364,3 +364,12 @@ nav {
 .js-remove {
     display: block;
 }
+
+#theForm .pure-control-group, #theForm .pure-control-group label, #theForm .pure-control-group input, #theForm .pure-control-group textarea {
+    font-size: 18px;
+}
+
+#theForm .pure-control-group input, #theForm .pure-control-group textarea {
+    width: 500px;
+    line-height: 2 !important;
+}
