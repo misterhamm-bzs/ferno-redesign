@@ -200,7 +200,7 @@
                                     <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                                 </div></td>
                                 <td>
-                                    <span>$29.46</span>
+                                    <span class="js-price">$29.46</span>
                                 </td>
                             </tr>
                             <tr class="saleable">
@@ -216,7 +216,7 @@
                                     <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                                 </div></td>
                                 <td>
-                                    <span>$32.89</span>
+                                    <span class="js-price">$32.89</span>
                                 </td>
                             </tr>
                             <tr class="saleable">
@@ -232,14 +232,14 @@
                                     <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                                 </div></td>
                                 <td>
-                                    <span>$14.22</span>
+                                    <span class="js-price">$14.22</span>
                                 </td>
                             </tr>
                             
                         </tbody>
                     </table>
                     <div style="float: right;">
-                        <span style="display: block; text-align: right;padding-right: 20px;font-size: 1.5rem;"><b>Subtotal:</b> $79.56</span>
+                        <span style="display: block; text-align: right;padding-right: 20px;font-size: 1.5rem;"><b>Subtotal:</b> $<span class="js-subtotal">0</span></span>
                     <a href="./cart/thank-you.html" class="btn -large" style="margin-top: 20px;margin-bottom: 40px;">Buy Now</a>
                 </div>
 
@@ -268,7 +268,7 @@
                             <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                         </div></td>
                         <td>
-                            <span>$5,999</span>
+                            <span class="js-price">$5,999</span>
                         </td>
                     </tr>
                     <tr>
@@ -284,7 +284,7 @@
                             <a href="#" style="font-size: 14px;" class="js-remove">Remove Item</a>
                         </div></td>
                         <td>
-                            <span>$247</span>
+                            <span class="js-price">$247</span>
                         </td>
                     </tr>
 
@@ -397,11 +397,13 @@
     <script type="text/javascript">
         const $checkbox = $('.js-checkbox');
         const $item = $('tr');
-        const $remove = $('.js-remove');
-
+        const $remove = $('.js-remove'); 
+        const $subtotalElem = $('.js-subtotal');
+        let subtotal = 0;
+        
         $checkbox.on('change', (e) => {
             const $currItem = $(e.currentTarget).closest($item);
-
+            
             if ($currItem.hasClass('saleable')) {
                 $currItem.appendTo('#quote');
                 $currItem.removeClass('saleable');
@@ -410,10 +412,24 @@
                 $currItem.appendTo('#shop');
                 $currItem.addClass('saleable');
             }
+            subtotal = 0;
+            calcSubtotal();
         });
+        
         $remove.on('click', (e) => {
             $(e.currentTarget).closest($item).hide();
         });
+        
+        function calcSubtotal() {
+            const $price = $('.saleable .js-price');
+            $price.each((index, value) => {
+                let currPrice = $(value).text().replace('$', '').replace(',', '');
+                console.log(currPrice);
+                subtotal += +currPrice;
+                subtotal = +subtotal.toFixed(2);
+                $subtotalElem.text(subtotal);
+            });
+        }calcSubtotal();
     </script>
 
     <link rel="stylesheet" href="../styles.css">
