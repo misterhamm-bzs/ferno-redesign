@@ -341,3 +341,26 @@ nav {
 .nav-simple-dropdown .js-nav-sub-categories-inner.nav-sub-categories-inner {
   display: none !important;
 } */
+
+.pure-table {
+    width: 100%;
+}
+
+.pure-table img {
+    max-width: 180px;
+}
+
+.pure-table td {
+    vertical-align: middle;
+}
+
+.pure-table label.pure-checkbox {
+    font-size: 18px;
+}
+
+#quote td:last-child span{
+    display: none;
+}
+.js-remove {
+    display: block;
+}
